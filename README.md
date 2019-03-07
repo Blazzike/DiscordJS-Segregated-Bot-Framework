@@ -54,6 +54,7 @@ An array of alternative labels for a user to execute the command.
 | `string` label       | The alias used to execute the command.                            |
 | `array` args         | The parameters sent to the command.                               |
 | `discord.js#Message` | The message instance used to execute the command from discord.js. |
+
 The function to be called when a command is called by a user.
 
 `HelpCommand.js` uses the following additional properties:
