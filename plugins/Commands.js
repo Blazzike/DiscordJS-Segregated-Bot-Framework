@@ -3,7 +3,7 @@ exports.onReady = () => {
     if (msg.author.bot) return;
 
     // Commands
-    if (msg.content.length > 1 && ((msg.content[0] === '.' && !msg.content.startsWith('...')) || msg.content[0] === '?')) {
+    if (msg.content.length > 1 && msg.content.startsWith(global.options.commandPrefix)) {
       let args = msg.content.split(' ');
       let label = args[0].substr(1);
       args.shift();
