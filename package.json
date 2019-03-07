@@ -1,0 +1,18 @@
+{
+  "name": "discordjs-segregated-bot-framework",
+  "version": "0.1.0",
+  "description": "Discord.js Plugin loading Bot Framework",
+  "readme": "README.md",
+  "license": "MIT",
+  "main": "index.js",
+  "author": "James Blazzike",
+  "repository": {
+    "url": "https://github.com/Blazzike/DiscordJS-Segregated-Bot-Framework"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
+}
