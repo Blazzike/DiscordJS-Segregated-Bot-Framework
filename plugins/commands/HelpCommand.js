@@ -18,7 +18,7 @@ exports.commands = {
           if (!categories.hasOwnProperty(cmd.category))
             categories[cmd.category] = '';
 
-          categories[cmd.category] += `?${label}${cmd.hasOwnProperty('includeAliasesInHelp')
+          categories[cmd.category] += `${global.options.commandPrefix}${label}${cmd.hasOwnProperty('includeAliasesInHelp')
           && cmd.includeAliasesInHelp ? `, ${cmd.aliases.join(', ')}` : ''} ${cmd.hasOwnProperty('parameters') ?
             `*${cmd.parameters.join(' ')}* ` : ''}**${cmd.description}**\n`;
         });
