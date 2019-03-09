@@ -20,7 +20,7 @@ exports.onReady = () => {
           if (cmd.hasOwnProperty('aliases'))
             labels.push(...cmd.aliases);
 
-          labels.map(label => label.toLowerCase());
+          labels = labels.map(label => label.toLowerCase());
 
           if (!labels.includes(label.toLowerCase()))
             return;
