@@ -5,7 +5,7 @@ PluginLoader = require('./PluginLoader');
 client = new discord.Client();
 plugins = {};
 
-client.on('ready', () => {
+client.once('ready', () => {
   console.debug('Loading plugins...');
   PluginLoader.loadPlugins('./plugins/');
   console.debug('Loaded plugins!');
