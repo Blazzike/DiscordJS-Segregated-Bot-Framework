@@ -3,9 +3,9 @@ exports.onReady = () => {
     if (msg.author.bot) return;
 
     // Commands
-    if (msg.content.length > 1 && msg.content.startsWith(global.options.commandPrefix)) {
+    if (msg.content.length > 1 && msg.content.toLowerCase().startsWith(global.options.commandPrefix.toLowerCase())) {
       let args = msg.content.split(' ');
-      let label = args[0].substr(1);
+      let label = args[0].substr(global.options.commandPrefix.length);
       args.shift();
 
       let responded = false;
@@ -20,7 +20,9 @@ exports.onReady = () => {
           if (cmd.hasOwnProperty('aliases'))
             labels.push(...cmd.aliases);
 
-          if (!labels.includes(label))
+          labels.map(label => label.toLowerCase());
+
+          if (!labels.includes(label.toLowerCase()))
             return;
 
           responded = true;

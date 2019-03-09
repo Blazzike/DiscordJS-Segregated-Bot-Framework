@@ -1,6 +1,6 @@
 module.exports = {
-  name: 'SegregatedBot',
-  themeColor: 0xFFFFFF,
-  token: '' || process.env.TOKEN,
-  commandPrefix: '!'
+  name: process.env.NAME || 'SegregatedBot',
+  themeColor: process.env.THEME_COLOR || 0xFFFFFF,
+  token: process.env.TOKEN || '',
+  commandPrefix: process.env.COMMAND_PREFIX || '!'
 };

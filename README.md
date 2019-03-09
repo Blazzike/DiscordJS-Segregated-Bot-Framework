@@ -46,6 +46,9 @@ The current Discord.js session's client class, accessible anywhere.
 ### `object` global.options
 The options set within the options.js file. 
 
+### `discord.js` global.discord
+Discord.js required instance, alternative to `require('discord.js')`. 
+
 ### `object` global.plugins
 
 An object of plugin instances, these instances are in the following form:
