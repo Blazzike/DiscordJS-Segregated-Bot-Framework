@@ -10,7 +10,7 @@
     "url": "https://github.com/Blazzike/DiscordJS-Segregated-Bot-Framework"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js || true"
   },
   "dependencies": {
     "discord.js": "^11.4.2"
