@@ -29,7 +29,7 @@ process.on('SIGINT', (e) => {
 });
 
 if (!options.token) {
-  console.error("No token set, please edit config.js or provide the TOKEN enviroment variable.");
+  console.error('No token set, please edit config.js or provide the TOKEN enviroment variable.');
   process.exit(1);
 }
 
