@@ -5,6 +5,7 @@ let intervals = [];
 
 exports.loadPlugin = file => {
   console.debug(`Loading ${path.basename(file)}...`);
+  delete require.cache[require.resolve('./' + file)];
   let plugin = require('./' + file);
 
   global.plugins[path.basename(file, '.js')] = plugin;
@@ -45,7 +46,9 @@ exports.disablePlugins = () => {
     clearInterval(timeout);
   });
 
-  Object.values(global.plugins).forEach(plugin => {
+  Object.keys(global.plugins).forEach(pluginFile => {
+    let plugin = global.plugins[pluginFile];
+    console.debug(`Unloading ${pluginFile}...`);
     if (plugin.hasOwnProperty('onDisable'))
       plugin.onDisable();
   });

@@ -1,10 +1,11 @@
 exports.console = {
   commands: {
     reload: {
-      description: 'Attempts to reloads plugins, doesn\'t really work.',
+      description: 'Reloads plugins, not for production use!',
       aliases: ['rl'],
       exec: (label, args) => {
         global.PluginLoader.disablePlugins();
+        console.log(global.plugins);
         global.PluginLoader.loadPlugins('./plugins/');
 
         Object.values(global.plugins).forEach(plugin => {
