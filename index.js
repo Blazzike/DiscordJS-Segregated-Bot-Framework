@@ -21,6 +21,13 @@ client.once('ready', () => {
 
 client.on('error', console.error);
 
+process.stdin.resume();
+process.on('SIGINT', (e) => {
+  PluginLoader.disablePlugins();
+
+  process.exit();
+});
+
 if (!options.token) {
   console.error("No token set, please edit config.js or provide the TOKEN enviroment variable.");
   process.exit(1);
