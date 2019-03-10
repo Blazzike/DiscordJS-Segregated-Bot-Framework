@@ -7,9 +7,9 @@ module.exports = {
       description: 'Flips a coin, heads or tails?'
     },
     de: {
-      heads: 'Köpfe!',
-      tails: 'Schwänze!',
-      description: 'Wirft eine Münze, Köpfe oder Schwänze?'
+      heads: 'Kopf!',
+      tails: 'Fuß!',
+      description: 'Wirft eine Münze, Kopf oder Fuß?'
     }
   }
 };
