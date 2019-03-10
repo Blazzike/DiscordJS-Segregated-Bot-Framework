@@ -10,6 +10,18 @@ Discord.js Plugin loading Bot Framework
 ## Plugin API
 To create a new plugin, simply add a new JS file into the `plugins/` directory.
 
+### ignore.json
+`ignore.json` can be added to any directory within plugins/ including plugins/ itself. It is a file containing a JSON array of globs to be ignored when loading plugins.
+
+#### Example Usage
+```json
+[
+  "**/*Command.js",
+  "!**/HelpCommand.js"
+]
+```
+The above ignore.json would ignore all JS files ending in `Command` except from `HelpCommand.js`.
+
 ### `function` exports.onEnable
 Called upon the plugin being loaded/enabled.
 
