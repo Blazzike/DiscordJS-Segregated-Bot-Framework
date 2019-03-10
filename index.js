@@ -21,5 +21,10 @@ client.once('ready', () => {
 
 client.on('error', console.error);
 
+if (!options.token) {
+  console.error("No token set, please edit config.js or provide the TOKEN enviroment variable.");
+  process.exit(1);
+}
+
 console.debug('Connecting to Discord...');
 client.login(options.token);
