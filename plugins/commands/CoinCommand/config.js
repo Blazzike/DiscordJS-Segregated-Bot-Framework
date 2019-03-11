@@ -8,8 +8,8 @@ module.exports = {
     },
     de: {
       heads: 'Kopf!',
-      tails: 'Fuß!',
-      description: 'Wirft eine Münze, Kopf oder Fuß?'
+      tails: 'Zahl!',
+      description: 'Wirft eine Münze, Kopf oder Zahl?'
     }
   }
 };
