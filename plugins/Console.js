@@ -36,6 +36,12 @@ const lineHandler = str => {
 };
 
 exports.onReady = () => {
+  if (client.shard.count > 1) {
+    console.error('Console.js does not support multiple shards.');
+
+    return;
+  }
+
   terminal.setPrompt('>');
 
   terminal.on('line', lineHandler).on('close', () => {
