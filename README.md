@@ -4,77 +4,74 @@ Discord.js Plugin loading Bot Framework
 ## Contributing
 1. Fork the repository
 2. Clone that repository. (`git clone https://github.com/*/DiscordJS-Segregated-Bot-Framework.git`)
-3. Make and commit changes.
-4. Open pull request.
+3. Run `npm install` in cloned directory.
+4. Run `npm run start` to start the bot (include TOKEN environment variable!).
+4. Make and commit changes.
+6. Open pull request.
 
 ## Plugin API
-To create a new plugin, simply add a new JS file into the `plugins/` directory.
+To create a new plugin, add a new plugin JS file into the `plugins/` directory then add said plugin path excluding plugins/ and the .js extension to config.js.
 
-### ignore.json
-`ignore.json` can be added to any directory within plugins/ including plugins/ itself. It is a file containing a JSON array of globs to be ignored when loading plugins.
-
-#### Example Usage
-```json
-[
-  "**/*Command.js",
-  "!**/HelpCommand.js"
-]
-```
-The above ignore.json would ignore all JS files ending in `Command` except from `HelpCommand.js`.
-
-### `function` exports.onEnable
+### `function` exports.enable
 Called upon the plugin being loaded/enabled.
 
 #### Example Usage
 ```js
-exports.onEnable = () => {
-  console.log("Enabled plugin.");
+module.exports = {
+  name: 'Demo',
+  enable() { 
+    console.log('Enabled plugin.');
+  }
 };
 ```
 
-### `function` exports.onReady
-Called upon all plugins being loaded.
+### `function` exports.disable
+Called upon the plugin being disabled.
 
 #### Example Usage
 ```js
-exports.onReady = () => {
-  console.log("There are", Object.keys(global.plugins).length, "plugins ready.");
+module.exports = {
+  name: 'Demo',
+  disable() { 
+    console.log('Disabled plugin.');
+  }
 };
 ```
 
-### `function` exports.onDisable
-Called upon the plugin being unloaded/disabled.
+### Accessing the discord.js client.
+The discord.js client is exported by shard.js.
 
 #### Example Usage
 ```js
-exports.onDisable = () => {
-  console.log("Disabled plugin.");
-};
+const {client} = require('../shard');
 ```
 
-### `discord.js#Client` global.client
-The current Discord.js session's client class, accessible anywhere.
+### discord.js client events
+discord.js' client events are automatically called properties of a plugin.
 
-### `object` global.options
-The options set within the options.js file. 
+#### Example Usage
+```js
+module.exports = {
+  name: 'Demo',
+  message(msg) {
+    msg.reply('Hello!'); // Note this will cause a loop.
+  }
+}
+```
 
-### `discord.js` global.discord
-Discord.js required instance, alternative to `require('discord.js')`. 
-
-### `object` global.plugins
-
-An object of plugin instances, these instances are in the following form:
-`PluginFileName: Exported properties.`
+You may also register events through the client, although this should be avoided. If this is done, ensure you unregister on disable.
 
 ## Commands.js API
 ### `object` exports.commands
 #### Example usage:
 ```js
-exports.commands = {
-  label: {
-    aliases: ['alias'],
-    exec: (label, args, msg) => {
-      return "Response.";
+module.exports = {
+  commands: {
+    label: {
+      aliases: ['alias'],
+      exec: (label, args, msg) => {
+        return 'Response.';
+      }
     }
   }
 };
